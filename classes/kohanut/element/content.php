@@ -44,7 +44,19 @@ class Kohanut_Element_Content extends Kohanut_Element
 	
 	protected function _render()
 	{
-		$out = $this->code;
+		$out = '';
+
+		if ( ! is_null($this->wrapper))
+		{
+			$out .= '<'.$this->wrapper.(is_null($this->wrapper_class) ? '' : ' class="'.$this->wrapper_class.'"').'>';
+		}
+
+		$out .= $this->code;
+
+		if ( ! is_null($this->wrapper))
+		{
+			$out .= '</'.$this->wrapper.'>';
+		}
 		
 		// Should we run it through markdown?
 		if ($this->markdown)
