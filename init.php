@@ -28,12 +28,13 @@ Route::set('kohanut-login','admin/<action>',array('action'=>'login|logout|lang')
 		'controller' => 'admin',
 		'directory'  => 'kohanut/admin',
 	));
+
 // Kohanut Plugin Admin route
 Route::set('kohanut-plugin-admin','admin/plugin/<controller>(/<action>(/<params>))',array('params'=>'.*'))
 	->defaults(array(
-		'controller' => 'pages',
+		'controller' => '',
 		'action'     => '',
-		'directory'  => 'kohanut/plugin'
+		'directory'  => 'kohanut/admin/plugin'
 	));
 
 // Kohanut Admin route
