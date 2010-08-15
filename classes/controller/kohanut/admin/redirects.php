@@ -1,34 +1,48 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Plugins Controller
+ * Redirects Controller
  *
  * @package    Kohanut
  * @author     Michael Peters
  * @copyright  (c) Michael Peters
  * @license    http://kohanut.com/license
  */
-class Controller_Kohanut_Plugins extends Controller_Kohanut_Admin {
+class Controller_Kohanut_Admin_Redirects extends Controller_Kohanut_Admin {
 
 	public function action_index()
 	{
-		$plugins = Sprig::factory('kohanut_plugin')->load(NULL,FALSE);
+		$redirects = Sprig::factory('kohanut_redirect')->load(NULL,FALSE);
 		
-		$this->view->title = "Plugins";
-		$this->view->body = View::factory('kohanut/plugins/list', array('plugins' => $plugins));
+		$this->view->title = "Redirects";
+		$this->view->body = View::factory('/kohanut/redirects/list',array('redirects'=>$redirects));
 	}
 	
-	public function action_install($name)
+	public function action_new()
 	{
-		Kohanut_Plugin::install($name);
-
-		$this->request->redirect(Route::get('kohanut-admin')->uri(array('controller' => 'plugins')));
-	}
-
-	public function action_uninstall($name)
-	{
-		Kohanut_Plugin::uninstall($name);
-
-		$this->request->redirect(Route::get('kohanut-admin')->uri(array('controller' => 'plugins')));
+		
+		$redirect = Sprig::factory('kohanut_redirect');
+		
+		$errors = false;
+		
+		if ($_POST)
+		{
+			try
+			{
+				$redirect->values($_POST);
+				$redirect->create();
+				
+				$this->request->redirect(Route::get('kohanut-admin')->uri(array('controller'=>'redirects')));
+			}
+			catch (Validate_Exception $e)
+			{
+				$errors = $e->array->errors('redirect');
+			}
+		}
+		
+		$this->view->title = "New Redirect";
+		$this->view->body = View::factory('/kohanut/redirects/new');
+		$this->view->body->redirect = $redirect;
+		$this->view->body->errors = $errors;
 	}
 	
 	public function action_edit($id)

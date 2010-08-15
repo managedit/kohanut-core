@@ -10,6 +10,6 @@
 		<p>
 			<?php echo form::submit('submit',__('Change Language'),array('class'=>'submit')) ?>
 		</p>
-		</form>
+		<?php echo form::close() ?>
 	</div>
 </div>

@@ -9,7 +9,7 @@ if (is_dir($modules['kohanut'].'/classes/controller/kohanut/install'))
 		->defaults(array(
 			'controller' => 'install',
 			'action'     => 'index',
-			'directory'  => 'kohanut/install'
+			'directory'  => 'kohanut/admin/install'
 		));
 }
 
@@ -26,7 +26,7 @@ Route::set('kohanut-media','media(/<file>)', array('file' => '.+'))
 Route::set('kohanut-login','admin/<action>',array('action'=>'login|logout|lang'))
 	->defaults(array(
 		'controller' => 'admin',
-		'directory'  => 'kohanut',
+		'directory'  => 'kohanut/admin',
 	));
 // Kohanut Plugin Admin route
 Route::set('kohanut-plugin-admin','admin/plugin/<controller>(/<action>(/<params>))',array('params'=>'.*'))
@@ -41,6 +41,6 @@ Route::set('kohanut-admin','admin(/<controller>(/<action>(/<params>)))',array('p
 	->defaults(array(
 		'controller' => 'pages',
 		'action'     => '',
-		'directory'  => 'kohanut'
+		'directory'  => 'kohanut/admin'
 	));
 

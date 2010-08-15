@@ -7,7 +7,7 @@
  * @copyright  (c) Michael Peters
  * @license    http://kohanut.com/license
  */
-class Controller_Kohanut_Users extends Controller_Kohanut_Admin {
+class Controller_Kohanut_Admin_Users extends Controller_Kohanut_Admin {
 
 	public function before()
 	{

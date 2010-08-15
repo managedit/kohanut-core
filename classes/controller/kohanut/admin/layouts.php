@@ -7,7 +7,7 @@
  * @copyright  (c) Michael Peters
  * @license    http://kohanut.com/license
  */
-class Controller_Kohanut_Layouts extends Controller_Kohanut_Admin {
+class Controller_Kohanut_Admin_Layouts extends Controller_Kohanut_Admin {
 
 	public function action_index()
 	{
