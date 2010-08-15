@@ -17,7 +17,7 @@
 <!-- End Kohanut includes -->
 
 </head>
-<body<?php if (Kohanut::$adminmode) echo " id='kohanut_admin'"; ?> class="layout_<?php echo url::title(Kohanut::$page->layout->name, '_') ?> <?php echo url::title(Kohanut::$page->name, '_') ?>">
+<body<?php if (Kohanut::$adminmode) echo " id='kohanut_admin'"; ?> class="layout_<?php echo url::title(Kohanut::$page->layout->name, '_') ?> page_<?php echo url::title(Kohanut::$page->name, '_') ?>">
 <?php if (Kohanut::$adminmode): ?>
 <!-- Admin mode header -->
 <div id="kohanut_header">
