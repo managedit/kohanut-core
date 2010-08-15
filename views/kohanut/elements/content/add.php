@@ -10,6 +10,16 @@
 			<p>
 				<?php echo $element->input('code') ?>
 			</p>
+
+			<p>
+				<label><?php echo __($element->label('wrapper')) ?></label>
+				<?php echo $element->input('wrapper') ?>
+			</p>
+
+			<p>
+				<label><?php echo __($element->label('wrapper_class')) ?></label>
+				<?php echo $element->input('wrapper_class') ?>
+			</p>
 	
 			<p>
 				<?php echo $element->input('markdown',array('class'=>'check')) ?>

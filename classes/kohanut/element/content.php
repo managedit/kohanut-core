@@ -16,14 +16,25 @@ class Kohanut_Element_Content extends Kohanut_Element
 	{
 		$this->_fields += array(
 			'id' => new Sprig_Field_Auto,
-			
 			'code' => new Sprig_Field_Text,
-			
 			'markdown' => new Sprig_Field_Boolean(array('append_label'=>false,'default'=>true)),
-			
 			'twig' => new Sprig_Field_Boolean(array('append_label'=>false,'default'=>false)),
+			'wrapper' => new Sprig_Field_Char(array(
+				'empty' => TRUE,
+				'null' => TRUE,
+				'default' => NULL,
+				'choices' => array(
+					NULL => 'None',
+					'div' => 'Div',
+					'span' => 'Span',
+				),
+			)),
+			'wrapper_class' => new Sprig_Field_Char(array(
+				'empty' => TRUE,
+				'null' => TRUE,
+				'default' => NULL,
+			)),
 		);
-	
 	}
 	
 	public function title()
