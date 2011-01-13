@@ -52,33 +52,6 @@ class Kohanut_Plugin {
 		}
 	}
 
-	// Is this needed?
-//	public static function unregister_plugin($name)
-//	{
-//		if ( ! isset(Kohanut_Plugin::$_registered_plugins[$name]))
-//			return FALSE;
-//
-//		Event::run('kohanut_plugin_unregistered', Kohanut_Plugin::$_registered_plugins[$name]);
-//
-//		unset(Kohanut_Plugin::$_registered_plugins[$name]);
-//
-//		return TRUE;
-//	}
-
-//	public static function check_dependencies($name)
-//	{
-//		if ( ! isset(Kohanut_Plugin::$_registered_plugins[$name]))
-//			return FALSE;
-//
-//		$dependencies = array();
-//
-//		$event_data = array('plugin' => Kohanut_Plugin::$_registered_plugins[$name], 'dependencies' => array());
-//
-//		Event::run('kohanut_plugin_check_dependencies', $event_data);
-//
-//		return $dependencies;
-//	}
-
 	public static function install($name)
 	{
 		if ( ! isset(Kohanut_Plugin::$_registered_plugins[$name]))
@@ -92,11 +65,14 @@ class Kohanut_Plugin {
 		// Give the plugin a chance to get itself ready to go.
 		$class = "Kohanut_Plugin_".$name;
 
-		if ( ! call_user_func(array($class, 'install')))
+		if (method_exists($class, 'install'))
 		{
-			unset(Kohanut_Plugin::$_registered_plugins[$name]);
-			// TODO: Alert the user somehow
-			return FALSE;
+			if ( ! call_user_func(array($class, 'install')))
+			{
+				unset(Kohanut_Plugin::$_registered_plugins[$name]);
+				// TODO: Alert the user somehow
+				return FALSE;
+			}
 		}
 
 		$plugin = Sprig::factory('kohanut_plugin');
@@ -127,10 +103,13 @@ class Kohanut_Plugin {
 		// Give the plugin a chance to get itself ready to be disabled.
 		$class = "Kohanut_Plugin_".$name;
 
-		if ( ! call_user_func(array($class, 'uninstall')))
+		if (method_exists($class, 'uninstall'))
 		{
-			// TODO: Alert the user somehow
-			return FALSE;
+			if ( ! call_user_func(array($class, 'uninstall')))
+			{
+				// TODO: Alert the user somehow
+				return FALSE;
+			}
 		}
 
 		$plugin = Sprig::factory('kohanut_plugin');
