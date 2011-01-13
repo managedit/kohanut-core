@@ -33,7 +33,7 @@
 		}
 		else
 		{
-			echo '<li>'.__('No Snippets found.'). '</li>';
+			echo '<li><p>'.__('No Snippets found.'). '</p></li>';
 		}
 		?>
 		</ul>
