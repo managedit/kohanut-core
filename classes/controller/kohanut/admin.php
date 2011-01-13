@@ -21,7 +21,7 @@ class Controller_Kohanut_Admin extends Controller {
 	protected $requires_login = true;
 	
 	public function before()
-	{	
+	{
 		// Set the default view
 		$this->view = new View('kohanut/admin');
 		
