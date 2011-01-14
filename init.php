@@ -29,6 +29,15 @@ Route::set('kohanut-login','admin/<action>',array('action'=>'login|logout|lang')
 		'directory'  => 'kohanut/admin',
 	));
 
+// Kohanut Default Plugin Route
+// Plugins may provide their own custom routes for friendly URLs
+Route::set('kohanut-plugin','plugin/<controller>(/<action>(/<params>))',array('params'=>'.*'))
+	->defaults(array(
+		'controller' => '',
+		'action'     => '',
+		'directory'  => 'kohanut/plugin'
+	));
+
 // Kohanut Plugin Admin route
 Route::set('kohanut-plugin-admin','admin/plugin/<controller>(/<action>(/<params>))',array('params'=>'.*'))
 	->defaults(array(
