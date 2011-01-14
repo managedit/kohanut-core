@@ -456,7 +456,7 @@ class Kohanut_Core {
 	 * @return string
 	 * @throws Kohanut_Exception
 	 */
-	public static function override($layoutname, $pageurl, $content)
+	public static function override($layoutname, $page_url, $content)
 	{
 		// Be sure Twig has been included
 		if ( ! class_exists('Twig_Autoloader'))
@@ -477,11 +477,18 @@ class Kohanut_Core {
 		$layout = Sprig::factory('kohanut_layout',array('name'=>$layoutname))->load();
 		if ( ! $layout->loaded())
 			throw new Kohanut_Exception("Kohanut::override() failed because the layout with name '$layoutname' could not be found");
-			
-		// Find the Page
-		$page = Sprig::factory('kohanut_page',array('url'=>$pageurl))->load();
-		if ( ! $page->loaded())
-			throw new Kohanut_Exception("Kohanut::override() failed because the page with url '$pageurl' could not be found.");
+
+		if ($page_url instanceof Model_Kohanut_Page)
+		{
+			$page = $page_url;
+		}
+		else
+		{
+			// Find the Page
+			$page = Sprig::factory('kohanut_page',array('url'=>$page_url))->load();
+			if ( ! $page->loaded())
+				throw new Kohanut_Exception("Kohanut::override() failed because the page with url '$pageurl' could not be found.");
+		}
 			
 		// Set the required Kohanut variables, and render the page.
 		self::$page = $page;
