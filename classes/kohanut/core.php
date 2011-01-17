@@ -24,6 +24,7 @@ class Kohanut_Core {
 	// Which styles, scripts, and metas are wanted on the page
 	protected static $_javascripts = array();
 	protected static $_stylesheets = array();
+	protected static $_feeds = array();
 	protected static $_metas = array();
 
 	/**
@@ -355,6 +356,24 @@ class Kohanut_Core {
 				$out .= "\t" . html::style($stylesheet,array('media'=>$media)) . "\n";
 			else
 				$out .= "\t" . html::style($stylesheet) . "\n";
+		}
+		return $out;
+	}
+
+	/* Feed control
+	 * add and render feed <link>s to a page
+	 */
+	public static function feed($type, $href)
+	{
+		self::$_feeds[$type] = $href;
+	}
+
+	public static function feed_render()
+	{
+		$out = "";
+		foreach (self::$_feeds as $type => $href)
+		{
+			$out .= "\t<link rel=\"alternate\" type=\"".$type."\" href=\"".$href."\" />";
 		}
 		return $out;
 	}

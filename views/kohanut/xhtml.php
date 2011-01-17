@@ -13,6 +13,7 @@
 <!-- Begin Kohanut includes -->
 <?php echo Kohanut::style_render(); ?>
 <?php echo Kohanut::script_render(); ?>
+<?php echo Kohanut::feed_render(); ?>
 <?php echo Kohanut::meta_render(); ?>
 <!-- End Kohanut includes -->
 

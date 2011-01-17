@@ -17,9 +17,9 @@
 					<div class='actions'>
 						<?php
 						echo html::anchor(Route::get('kohanut-admin')->uri(array('controller'=>'plugins', 'action'=>'install', 'params' => $item->name)),
-							 '<div class="fam-add"></div><span>'.__('install').'</span>',array('title'=>__('Click to install')));
+							 '<div class="fam-plugin-add"></div><span>'.__('install').'</span>',array('title'=>__('Click to install')));
 						echo html::anchor(Route::get('kohanut-admin')->uri(array('controller'=>'plugins', 'action'=>'uninstall', 'params' => $item->name)),
-							 '<div class="fam-delete"></div><span>'.__('uninstall').'</span>',array('title'=>__('Click to uninstall')));
+							 '<div class="fam-plugin-delete"></div><span>'.__('uninstall').'</span>',array('title'=>__('Click to uninstall')));
 						?>
 					</div>
 					<p><?php echo $item->name . ($item->installed ? ' (Installed)' : '') ?></p>
