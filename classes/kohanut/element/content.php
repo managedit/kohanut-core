@@ -58,16 +58,16 @@ class Kohanut_Element_Content extends Kohanut_Element
 			$out .= '</'.$this->wrapper.'>';
 		}
 		
-		// Should we run it through markdown?
-		if ($this->markdown)
-		{
-			$out = Markdown($out);
-		}
-		
 		// Should we run it through twig?
 		if ($this->twig)
 		{
 			$out = Kohanut_Twig::render($out);
+		}
+
+		// Should we run it through markdown?
+		if ($this->markdown)
+		{
+			$out = Markdown($out);
 		}
 		
 		return $out;
