@@ -2381,7 +2381,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 		$text .= "<thead>\n";
 		$text .= "<tr>\n";
 		foreach ($headers as $n => $header)
-			$text .= "  <th class=\"md_col_$n\"$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
+			$text .= "  <th class=\"md_th_$n ".Text::alternate('md_th_odd','md_th_even')."\"$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
 		$text .= "</tr>\n";
 		$text .= "</thead>\n";
 		
@@ -2398,9 +2398,9 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			$row_cells = preg_split('/ *[|] */', $row, $col_count);
 			$row_cells = array_pad($row_cells, $col_count, '');
 			
-			$text .= "<tr class=\"md_row_$rn ".Text::alternate('md_row_odd','md_row_even')."\">\n";
+			$text .= "<tr class=\"md_tr_$rn ".Text::alternate('md_tr_odd','md_tr_even')."\">\n";
 			foreach ($row_cells as $n => $cell)
-				$text .= "  <td class=\"md_col_$n ".Text::alternate('md_col_odd','md_col_even')."\"$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
+				$text .= "  <td class=\"md_td_$n ".Text::alternate('md_td_odd','md_td_even')."\"$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
 			$text .= "</tr>\n";
 		}
 		$text .= "</tbody>\n";
