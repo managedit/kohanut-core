@@ -2381,7 +2381,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 		$text .= "<thead>\n";
 		$text .= "<tr>\n";
 		foreach ($headers as $n => $header)
-			$text .= "  <th$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
+			$text .= "  <th class=\"md_col_$n\"$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
 		$text .= "</tr>\n";
 		$text .= "</thead>\n";
 		
@@ -2389,7 +2389,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 		$rows = explode("\n", trim($content, "\n"));
 		
 		$text .= "<tbody>\n";
-		foreach ($rows as $row) {
+		foreach ($rows as $rn => $row) {
 			# Parsing span elements, including code spans, character escapes, 
 			# and inline HTML tags, so that pipes inside those gets ignored.
 			$row = $this->parseSpan($row);
@@ -2398,9 +2398,9 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			$row_cells = preg_split('/ *[|] */', $row, $col_count);
 			$row_cells = array_pad($row_cells, $col_count, '');
 			
-			$text .= "<tr>\n";
+			$text .= "<tr class=\"md_row_$rn ".Text::alternate('md_row_odd','md_row_even')."\">\n";
 			foreach ($row_cells as $n => $cell)
-				$text .= "  <td$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
+				$text .= "  <td class=\"md_col_$n ".Text::alternate('md_col_odd','md_col_even')."\"$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
 			$text .= "</tr>\n";
 		}
 		$text .= "</tbody>\n";

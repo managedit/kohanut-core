@@ -162,15 +162,15 @@ class Kohanut_Nav {
 		$out = '<li';
 		
 		// Do we have any classes?
-		if ($this->isfirst OR $this->islast OR $this->iscurrent)
-		{
-			$out .= ' class="' . trim( ($this->isfirst?'first ':'') . ($this->islast?'last ':'') . ($this->iscurrent?'current':'')) . '"';
-		}
+//		if ($this->isfirst OR $this->islast OR $this->iscurrent)
+//		{
+			$out .= ' class="' . trim( ($this->isfirst?'first ':'') . ($this->islast?'last ':'') . ($this->iscurrent?'current':'')) . ' nav_page_'.url::title($this->name, '_').'"';
+//		}
 		
 		// Add in base_url, but make sure it does not having a trailing slash, and make sure url does.
 		$out .= '>';
 		
-		$out .= html::anchor($this->url,$this->name);
+		$out .= html::anchor($this->url,'<span>'.$this->name.'</span>');
 		
 		// Do we have children?
 		if (count($this->children))

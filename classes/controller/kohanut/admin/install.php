@@ -69,7 +69,7 @@ class Controller_Kohanut_Admin_Install extends Controller {
 		$element_types = array(
 			'content' => array('name' => 'content', 'display_name' => 'Content'),
 			'request' => array('name' => 'request', 'display_name' => 'Request'),
-			'snippet' => array('name' => 'snippet', 'display_name' => 'Snipper'),
+			'snippet' => array('name' => 'snippet', 'display_name' => 'Snippet'),
 			'spacer' => array('name' => 'spacer', 'display_name' => 'Spacer'),
 		);
 

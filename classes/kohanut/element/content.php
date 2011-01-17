@@ -44,20 +44,8 @@ class Kohanut_Element_Content extends Kohanut_Element
 	
 	protected function _render()
 	{
-		$out = '';
+		$out = $this->code;
 
-		if ( ! is_null($this->wrapper))
-		{
-			$out .= '<'.$this->wrapper.(is_null($this->wrapper_class) ? '' : ' class="'.$this->wrapper_class.'"').'>';
-		}
-
-		$out .= $this->code;
-
-		if ( ! is_null($this->wrapper))
-		{
-			$out .= '</'.$this->wrapper.'>';
-		}
-		
 		// Should we run it through twig?
 		if ($this->twig)
 		{
@@ -68,6 +56,12 @@ class Kohanut_Element_Content extends Kohanut_Element
 		if ($this->markdown)
 		{
 			$out = Markdown($out);
+		}
+
+		// Add a wrapper if needed...
+		if ( ! is_null($this->wrapper))
+		{
+			$out = '<'.$this->wrapper.(is_null($this->wrapper_class) ? '' : ' class="'.$this->wrapper_class.'"').'>'.$out.'</'.$this->wrapper.'>';
 		}
 		
 		return $out;
