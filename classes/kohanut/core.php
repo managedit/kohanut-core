@@ -440,7 +440,7 @@ class Kohanut_Core {
 	 */
 	public static function route($name, $params)
 	{
-		return Route::get($name)->uri($params);
+		return Route::url($name, $params);
 	}
 
 	/* Media URL generator
