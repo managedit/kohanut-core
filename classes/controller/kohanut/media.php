@@ -42,6 +42,12 @@ class Controller_Kohanut_Media extends Controller {
 		
 		// Send the file content as the response, and send some basic headers
 		$this->request->response = file_get_contents($file);
+
+		if ($ext == 'css')
+		{
+			$this->request->response = str_replace('%URL_BASE%', url::base(), $this->request->response);
+		}
+		
 		$this->request->headers['Content-Type'] = File::mime_by_ext($ext);
 		$this->request->headers['Content-Length'] = filesize($file);
 		
