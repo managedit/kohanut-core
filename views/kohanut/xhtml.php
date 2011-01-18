@@ -34,6 +34,6 @@
 
 <?php echo $layoutcode ?>
 <!-- End Page Layout Code -->
-<?php if (Kohana::$environment == 'development') echo View::factory('profiler/stats') ?>
+<?php if (Kohana::$environment == 'development' AND Kohana::$profiling === TRUE) echo View::factory('profiler/stats') ?>
 </body>
 </html>
