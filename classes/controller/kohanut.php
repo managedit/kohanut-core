@@ -86,7 +86,7 @@ class Controller_Kohanut extends Controller
 			{
 				// Could not find page in database, throw a 404
 				Kohana::$log->add('INFO', "Kohanut - Could not find '$url' (404)"); 
-				throw new Kohanut_Exception("Could not find ':url'",array(':url' => $url),404);
+				throw new Kohanut_Exception("Could not find ':url' (404)",array(':url' => $url),404);
 			}
 			
 			// Set the status to 200, rather than 404, which was set by the router with the reflectionexception
@@ -95,7 +95,7 @@ class Controller_Kohanut extends Controller
 			$out = $page->render();
 		}
 		catch (Kohanut_Exception $e)
-		{echo $e->getMessage();die();
+		{
 			// Find the error page
 			$error = Sprig::factory('kohanut_page',array('url'=>'error'))->load();
 			
