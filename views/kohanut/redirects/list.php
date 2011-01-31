@@ -55,10 +55,11 @@
 	
 <div class="grid_4">
 	<div class="box">
-		<h1><?php echo __('Help') ?></h1>
-		
+		<h1><?php echo __('Actions') ?></h1>
 		<p><?php echo html::anchor(Route::get('kohanut-admin')->uri(array('controller'=>'redirects','action'=>'new')),__('Create a New Redirect'),array('class'=>'button')); ?></p>
-		
+	</div>
+	<div class="box">
+		<h1><?php echo __('Help') ?></h1>
 		<h3><?php echo __('What are redirects?') ?></h3>
 		<p><?php echo __('You should add a redirect if you move a page or a site, so links on other sites do not break, and search engine rankings are preserved.<br/><br/>When a user types in the outdated link, or clicks on an outdated link, they will be taken to the new link.<br/><br/>Redirect type should be permanent (301) in most cases, as this helps to preserve search engine rankings better. Leave it as permanent unless you know what you are doing.') ?></p> 
 		   

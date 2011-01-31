@@ -46,8 +46,7 @@
 
 <div class="grid_4">
 	<div class="box">
-		<h1><?php echo __('Help') ?></h1>
+		<h1><?php echo __('Actions') ?></h1>
 		<p><?php echo html::anchor(Route::get('kohanut-admin')->uri(array('controller'=>'layouts','action'=>'new')),__('Create a New Layout'),array('class'=>'button')); ?></p>
-		<p>Help goes here</p>
 	</div>
 </div>

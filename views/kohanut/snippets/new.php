@@ -36,8 +36,5 @@
 </div>
 
 <div class="grid_4">
-	<div class="box">
-		<h1><?php echo __('Help') ?></h1>
-		<p>Help goes here</p>
-	</div>
+	
 </div>
